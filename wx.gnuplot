@@ -26,7 +26,7 @@ NSDD='/wx_0x0b/data/derived.dat.2-3_day'
 
 # calibration from https://www.dwd.de/DE/wetter/wetterundklima_vorort/bayern/augsburg/_node.html [kPa]
 plot WS using 1:(($9 + 5.900)) title 'WS Atmospheric Pressure (kPa)' with lines linecolor rgb "#ff00ff",\
-     NS using 1:(($9 + 5.800)) title 'NS Atmospheric Pressure (kPa)' with lines linecolor rgb "#6000ff"
+     NS using 1:(($9 + 5.780)) title 'NS Atmospheric Pressure (kPa)' with lines linecolor rgb "#6000ff"
 
 set format y "%.1f"
 set format y2 "%.1f"
