@@ -10,3 +10,8 @@ This code can be found in the following places:
 
 Much of the data for all this is currently collected from two BME680s, the datasheet for which can be found here:
 * https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST-BME680-DS001.pdf
+
+
+Some of the images produced by this code look like so:
+![ext ns ws dew temp](https://darkdata.org/ghz/nw.wx/extdewtemp.png)
+![ns ws pressure](https://darkdata.org/ghz/nw.wx/pressure.png)
