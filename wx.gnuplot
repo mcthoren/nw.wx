@@ -26,7 +26,7 @@ WSDD='/wx1/data/derived.dat.2-3_day'
 NSDD='/wx_0x0b/data/derived.dat.2-3_day'
 
 # calibration from https://www.dwd.de/DE/wetter/wetterundklima_vorort/bayern/augsburg/_node.html [kPa]
-plot IS using 1:(($9 + 5.870)) title 'Indoor Atmospheric Pressure (kPa)' with lines linecolor rgb "#00f0f0",\
+plot IS using 1:(($9 + 5.890)) title 'Indoor Atmospheric Pressure (kPa)' with lines linecolor rgb "#00f0f0",\
      WS using 1:(($9 + 5.900)) title 'West Side Atmospheric Pressure (kPa)' with lines linecolor rgb "#ff00ff",\
      NS using 1:(($9 + 5.780)) title 'North Side Atmospheric Pressure (kPa)' with lines linecolor rgb "#6000ff"
 
