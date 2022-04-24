@@ -25,6 +25,7 @@ NSPT='/wx_0x0b/data/pi_temp.2-3_day'
 WSDD='/wx1/data/derived.dat.2-3_day'
 NSDD='/wx_0x0b/data/derived.dat.2-3_day'
 SPPT='/wx8/data/solar_power.2-3_day'
+LWPT='/wx/data/v2_light.dat.2-3_day'
 
 # calibration from https://www.dwd.de/DE/wetter/wetterundklima_vorort/bayern/augsburg/_node.html [kPa]
 plot IS using 1:(($9 + 5.890)) title 'Indoor Atmospheric Pressure (kPa)' with lines linecolor rgb "#00f0f0",\
@@ -40,7 +41,8 @@ set y2label "Pi Temp (°C)"
 set output 'pitemp.png'
 plot WSPT using 1:(($2/1000)) title 'West Side Pi Temp (°C)' with lines linecolor rgb "#00ff00" smooth bezier,\
      NSPT using 1:(($2/1000)) title 'North Side Pi Temp (°C)' with lines linecolor rgb "#00c040" smooth bezier,\
-     SPPT using 1:12 title 'Solar Power Pi Temp (°C)' with lines linecolor rgb "#f0c040" smooth bezier
+     SPPT using 1:12 title 'Solar Power Pi Temp (°C)' with lines linecolor rgb "#f0c040" smooth bezier,\
+     LWPT using 1:7 title 'Light WXv2 Pi Temp (°C)' with lines linecolor rgb "#0000ff" smooth bezier
 
 set title "Temperature for the Last \\~48 Hours"
 set ylabel "Temp (°C)"
