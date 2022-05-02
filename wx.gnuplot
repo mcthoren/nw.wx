@@ -36,7 +36,7 @@ plot IS using 1:(($9 + 5.890)) title 'Indoor Atmospheric Pressure (kPa)' with li
 set format y "%.1f"
 set format y2 "%.1f"
 
-set title "Raspberry Pi Temperature for the Last \\~48 Hours"
+set title "Raspberry Pi Temperatures for the Last \\~48 Hours"
 set ylabel "Pi Temp (°C)"
 set y2label "Pi Temp (°C)"
 set output 'pitemp.png'
