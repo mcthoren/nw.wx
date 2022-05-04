@@ -8,6 +8,7 @@ set xdata time;
 set format x "%F\n%TZ"
 set timefmt "%Y%m%d%H%M%S"
 set grid
+# set colors classic
 set term pngcairo size 2000, 512 font ",10"
 
 set title "Atmospheric pressure for the Last \\~48 Hours"
@@ -27,6 +28,10 @@ NSDD='/wx_0x0b/data/derived.dat.2-3_day'
 SPPT='/wx8/data/solar_power.2-3_day'
 LWPT='/wx/data/v2_light.dat.2-3_day'
 OLWPT='/wx7/data/light_levels.2-3_day'
+IPWPT='/wx0/dev/data/particle.dat.2-3_day'
+OPWPT='/wx5/data/particle.dat.2-3_day'
+PWPT='/wx0/power_weather/data/power.2-3_day'
+MQGWPT='/wx0/mqs/data/gas_levels.2-3_day'
 
 # calibration from https://www.dwd.de/DE/wetter/wetterundklima_vorort/bayern/augsburg/_node.html [kPa]
 plot IS using 1:(($9 + 5.890)) title 'Indoor Atmospheric Pressure (kPa)' with lines linecolor rgb "#00f0f0",\
@@ -40,11 +45,16 @@ set title "Raspberry Pi Temperatures for the Last \\~48 Hours"
 set ylabel "Pi Temp (°C)"
 set y2label "Pi Temp (°C)"
 set output 'pitemp.png'
-plot WSPT using 1:(($2/1000)) title 'West Side Pi Temp (°C)' with lines linecolor rgb "#00ff00" smooth bezier,\
-     NSPT using 1:(($2/1000)) title 'North Side Pi Temp (°C)' with lines linecolor rgb "#00c040" smooth bezier,\
-     SPPT using 1:12 title 'Solar Power Pi Temp (°C)' with lines linecolor rgb "#f0c040" smooth bezier,\
-     LWPT using 1:7 title 'Light WXv2 Pi Temp (°C)' with lines linecolor rgb "#0000ff" smooth bezier,\
-     OLWPT using 1:13 title 'Light WXv1 Pi Temp (°C)' with lines linecolor rgb "#bb00ff" smooth bezier
+plot WSPT using 1:(($2/1000)) title 'West Side Pi Temp (°C)' with lines lt 6 lw 2 smooth bezier,\
+     NSPT using 1:(($2/1000)) title 'North Side Pi Temp (°C)' with lines lc rgb "#00ffff" lw 2 smooth bezier,\
+     SPPT using 1:12 title 'Solar Power Pi Temp (°C)' with lines lt 3 lw 2 smooth bezier,\
+     LWPT using 1:7 title 'Light WXv2 Pi Temp (°C)' with lines lc rgb "#f1f100" lw 2 smooth bezier,\
+     OLWPT using 1:13 title 'Light WXv1 Pi Temp (°C)' with lines lc "orange" lw 2 smooth bezier,\
+     PWPT using 1:15 title 'Power WX Pi Temp (°C)' with lines lc "magenta" lw 2 smooth bezier,\
+     IPWPT using (timecolumn(1, "%Y-%m-%dT%H:%M:%SZ")):5 title 'Indoor Particle WX Pi Temp (°C)' with lines lc "green" lw 2 smooth bezier,\
+     OPWPT using (timecolumn(1, "%Y-%m-%dT%H:%M:%SZ")):5 title 'Outdoor Particle WX Pi Temp (°C)' with lines lc "web-green" lw 2 smooth bezier
+     # MQ gasses are currently on the same pi as indoor particle weather.
+     # MQGWPT using (timecolumn(1, "%Y-%m-%dT%H:%M:%SZ")):51 title 'MQ Gasses WX Pi Temp (°C)' with lines lt 10 lw 2 smooth bezier
 
 set title "Temperature for the Last \\~48 Hours"
 set ylabel "Temp (°C)"
