@@ -63,12 +63,14 @@ set output 'exttemp.png'
 plot WS using 1:3 title 'West Side Temp (°C)' with lines linecolor rgb "#00ff00",\
      NS using 1:3 title 'North Side Temp (°C)' with lines linecolor rgb "#00c040"
 
-set title "Temperature and Dew Point for the Last \\~48 Hours"
+set title "Temperature, Dew Point, and Wet-Bulb Temperature for the Last \\~48 Hours"
 set output 'extdewtemp.png'
 plot WS using 1:3 title 'West Side Temp (°C)' with lines linecolor rgb "#00ff00",\
      WSDD using 1:12 title 'West Side Dew Point (°C)' with lines linecolor rgb "#00ffc0",\
+     WSDD using 1:17 title 'West Side Web-Bulb Temp (°C)' with lines linecolor rgb "#00aac0",\
      NS using 1:3 title 'North Side Temp (°C)' with lines linecolor rgb "#00c040",\
-     NSDD using 1:12 title 'North Side Dew Point (°C)' with lines linecolor rgb "#00c0ff"
+     NSDD using 1:12 title 'North Side Dew Point (°C)' with lines linecolor rgb "#00c0ff",\
+     NSDD using 1:17 title 'North Side Wet-Bulb Temp (°C)' with lines linecolor rgb "#00c0aa"
 
 set title "Dew Point for the Last \\~48 Hours"
 set ylabel "Dew Point (°C)"
@@ -76,6 +78,13 @@ set y2label "Dew Point (°C)"
 set output 'extdew.png'
 plot WSDD using 1:12 title 'West Side Dew Point (°C)' with lines linecolor rgb "#00ffc0",\
      NSDD using 1:12 title 'North Side Dew Point (°C)' with lines linecolor rgb "#00c0ff"
+
+set title "Wet-Bulb Temp for the Last \\~48 Hours"
+set ylabel "Wet-Bulb Temp (°C)"
+set y2label "Wet-Bulb Temp (°C)"
+set output 'extwetbulb.png'
+plot WSDD using 1:17 title 'West Side Wet-Bulb Temp (°C)' with lines linecolor rgb "#00aaff",\
+     NSDD using 1:17 title 'North Side Wet-Bulb Temp (°C)' with lines linecolor rgb "#00ffff"
 
 set title "Heat Index for the Last \\~48 Hours"
 set ylabel "Heat Index (°C)"
