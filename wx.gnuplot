@@ -31,6 +31,7 @@ OLWPT='/wx7/data/light_levels.2-3_day'
 IPWPT='/wx0/dev/data/particle.dat.2-3_day'
 OPWPT='/wx5/data/particle.dat.2-3_day'
 PWPT='/wx0/power_weather/data/power.2-3_day'
+PWPT='/wx0/power_weather/data/power.24_hours'
 MQGWPT='/wx0/mqs/data/gas_levels.2-3_day'
 
 # calibration from:
