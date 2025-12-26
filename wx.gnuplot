@@ -10,12 +10,13 @@ set format x "%F\n%TZ"
 set timefmt "%Y%m%d%H%M%S"
 set grid
 # set colors classic
-set term pngcairo size 2000, 512 font ",10"
+# set term pngcairo size 2000, 512 font ",10"
+set term svg size 2000, 512 font ",12" background '0xffffff'
 
 set title "Atmospheric pressure for the Last \\~48 Hours"
 set ylabel "Pressure (kPa)"
 set y2label "Pressure (kPa)"
-set output 'pressure.png'
+set output 'pressure.svg'
 set format y "%.2f"
 set format y2 "%.2f"
 
@@ -47,7 +48,7 @@ set format y2 "%.1f"
 set title "Raspberry Pi Temperatures for the Last \\~48 Hours"
 set ylabel "Pi Temp (°C)"
 set y2label "Pi Temp (°C)"
-set output 'pitemp.png'
+set output 'pitemp.svg'
 plot WSPT using 1:(($2/1000)) title 'Balcony Pi Temp (°C)' with lines lt 6 lw 2 smooth bezier,\
      NSPT using 1:(($2/1000)) title 'Window Pi Temp (°C)' with lines lc rgb "#00ffff" lw 2 smooth bezier,\
      SPPT using 1:12 title 'Solar Power Pi Temp (°C)' with lines lt 3 lw 2 smooth bezier,\
@@ -62,12 +63,12 @@ plot WSPT using 1:(($2/1000)) title 'Balcony Pi Temp (°C)' with lines lt 6 lw 2
 set title "Temperature for the Last \\~48 Hours"
 set ylabel "Temp (°C)"
 set y2label "Temp (°C)"
-set output 'exttemp.png'
+set output 'exttemp.svg'
 plot WS using 1:3 title 'Balcony Temp (°C)' with lines linecolor rgb "#00ff00",\
      NS using 1:3 title 'Window Temp (°C)' with lines linecolor rgb "#00c040"
 
 set title "Temperature, Dew Point, and Wet-Bulb Temperature for the Last \\~48 Hours"
-set output 'extdewtemp.png'
+set output 'extdewtemp.svg'
 plot WS using 1:3 title 'Balcony Temp (°C)' with lines linecolor rgb "#00ff00",\
      WSDD using 1:12 title 'Balcony Dew Point (°C)' with lines linecolor rgb "#00ffc0",\
      WSDD using 1:17 title 'Balcony Web-Bulb Temp (°C)' with lines linecolor rgb "#00aac0",\
@@ -78,28 +79,28 @@ plot WS using 1:3 title 'Balcony Temp (°C)' with lines linecolor rgb "#00ff00",
 set title "Dew Point for the Last \\~48 Hours"
 set ylabel "Dew Point (°C)"
 set y2label "Dew Point (°C)"
-set output 'extdew.png'
+set output 'extdew.svg'
 plot WSDD using 1:12 title 'Balcony Dew Point (°C)' with lines linecolor rgb "#00ffc0",\
      NSDD using 1:12 title 'Window Dew Point (°C)' with lines linecolor rgb "#00c0ff"
 
 set title "Wet-Bulb Temp for the Last \\~48 Hours"
 set ylabel "Wet-Bulb Temp (°C)"
 set y2label "Wet-Bulb Temp (°C)"
-set output 'extwetbulb.png'
+set output 'extwetbulb.svg'
 plot WSDD using 1:17 title 'Balcony Wet-Bulb Temp (°C)' with lines linecolor rgb "#00aaff",\
      NSDD using 1:17 title 'Window Wet-Bulb Temp (°C)' with lines linecolor rgb "#00ffff"
 
 set title "Heat Index for the Last \\~48 Hours"
 set ylabel "Heat Index (°C)"
 set y2label "Heat Index (°C)"
-set output 'heatindex.png'
+set output 'heatindex.svg'
 plot WSDD using 1:8 title 'Balcony Heat Index (°C)' with lines linecolor rgb "#ff4000",\
      NSDD using 1:8 title 'Window Heat Index (°C)' with lines linecolor rgb "#ff0040"
 
 set title "Absolute Humidity for the Last \\~48 Hours"
 set ylabel "Absolute Humidity (g/m³)"
 set y2label "Absolute Humidity (g/m³)"
-set output 'abshum.png'
+set output 'abshum.svg'
 plot WSDD using 1:4 title 'Balcony Absolute Humidity (g/m³)' with lines linecolor rgb "#00a0c0",\
      NSDD using 1:4 title 'Window Absolute Humidity (g/m³)' with lines linecolor rgb "#0000aa"
 
@@ -109,7 +110,7 @@ set format y2 "%.2f"
 set title "Relative Humidity for the Last \\~48 Hours"
 set ylabel "Relative Humidity (%)"
 set y2label "Relative Humidity (%)"
-set output 'exthum.png'
+set output 'exthum.svg'
 plot WS using 1:6 title 'Balcony Relative Humidity (%)' with lines linecolor rgb "#00cc00",\
      NS using 1:6 title 'Window Relative Humidity (%)' with lines linecolor rgb "#009999"
 
@@ -119,6 +120,6 @@ set format y2
 set title "Air Quality Sensor Data for the Last \\~48 Hours"
 set ylabel "Air Quality (kOhms)"
 set y2label "Air Quality (kOhms)"
-set output 'airquality.png'
+set output 'airquality.svg'
 plot WS using 1:(($12 / 1000)) title 'Balcony Air Quality Sensor Reading (kOhms)' with lines linecolor rgb "#ff4000",\
      NS using 1:(($12 / 1000)) title 'Window Air Quality Sensor Reading (kOhms)' with lines linecolor rgb "#ff0040"
